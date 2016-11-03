@@ -1,0 +1,43 @@
+<!-- views/data.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Super Awesome</title>
+
+<!-- CSS (load bootstrap from a CDN) -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <style>
+        body    { padding-top:50px; }
+    </style>
+</head>
+<body class="container">
+
+    <header>
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="col-sm-8">             
+                <h2>Loop</h2>
+                <ul>
+                    <% results.forEach(function(result) { %>
+                        <li><%= result.id %> - <%= result.msg %></li>
+                    <% }); %>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                
+                <div class="well">
+                    <h3>Look I'm A Sidebar!</h3>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="text-center text-muted">© Copyright 2014 The Awesome People</p>
+    </footer>
+</body>
+</html>
