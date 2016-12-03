@@ -1,96 +1,40 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      #msgForm { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      #msgForm input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      #msgForm button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
+    <title>Dice n' Chat</title>
+
+	<!-- static link to custome site css -->
+	<link rel="stylesheet" href="static/styles/style.css"></style>
+
   </head>
 
   <body>
-    <ul id="messages">        
-        <% results.forEach(function(result) { %>
-            <li><%= result.msg %></li>
-        <% }); %>
-    </ul>
-    <form id="diceBtns" name="diceBtns" action="">
-      <button id="roll1D6" name="roll1D6">Roll 1d6</button>
-    </form>
+    <nav>
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    </nav>
 
-    <form id="msgForm" name ="msgForm" action="">
-      <input id="msg" name="msg" autocomplete="off" /><button>Send</button>
-    </form>
+    <div class="container">
+      <ul id="messages">
+          <% results.forEach(function(result) { %>
+              <li><%= result.msg %></li>
+          <% }); %>
+      </ul>
+      <form id="diceBtns" name="diceBtns" action="">
+        <button id="roll1D6" name="roll1D6">Roll 1d6</button>
+      </form>
 
-  
+      <form id="msgForm" name ="msgForm" action="">
+        <input id="msg" name="msg" autocomplete="off" /><button>Send</button>
+      </form>
+    </div>
+
   </body>
 
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script>  
-
-  // dice roller
-  function diceRoll(number, min, max) {
-      var diceRunningTotal = 0;
-      // console.log("Rolling a D" + max);
-    for (var numberOfRolls = 0; numberOfRolls < number; numberOfRolls++) {
-      var aSingleDie = (Math.random() * ((max + 1) - min) + min);
-      aSingleDie = Math.floor(aSingleDie);		
-      // console.log("You rolled a " + aSingleDie);
-      diceRunningTotal += aSingleDie;
-    }
-    // console.log("running total is " + diceRunningTotal);
-    
-  return diceRunningTotal;
-
-  }
-
-    var socket = io();
-    // socket.on('news', function (data) {
-    //   console.log(data);
-    // });
-
-    $('#msgForm').submit(function(e){
-        e.preventDefault();
-        $.ajax({
-            url:'/post/',
-            type:'post',
-            data:$('#msgForm').serialize(),
-            success:function(){
-                //whatever you wanna do after the form is successfully submitted            
-                socket.emit('chat message', $('#msg').val());
-                $('#msg').val('');
-                return false;
-            }
-        });
-    });
-    
-
-    $('#diceBtns').submit(function(e){
-        e.preventDefault();
-
-        var rollResult = "Rolled: " + diceRoll(1,1,6);
-
-        $.ajax({
-            url:'/post/',
-            type:'post',
-            data:"msg=" + rollResult,
-            success:function(){
-                //whatever you wanna do after the form is successfully submitted            
-                socket.emit('chat message', rollResult);
-                return false;
-            }
-        });
-    });
-
-    socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
-    });
-  </script>
+  <script src="/static/scripts/script.js"></script>
 </html>

@@ -1,0 +1,106 @@
+$nav-height: 4vh;
+$menu-background-color: #43238a;
+$menu-text-colour: white;
+
+$main-background-color: #b191f9;
+$main-font: "Courier";
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font: 13px $main-font, Arial; }
+// textarea, input { outline: none; }
+// #msgForm { background: #000; padding: 3px; position: fixed; bottom: 0; width: 65%; left: 17.5%}
+// #msgForm input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+// #msgForm button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+// #messages { list-style-type: none; margin: 0; padding: 0; position: fixed; width: 65%; left: 17.5%}
+// #messages li { padding: 5px 10px; }
+// #messages li:nth-child(odd) { background: #eee; }
+
+
+nav {
+  background-color: $menu-background-color;
+  height: $nav-height;
+  position: fixed;
+  width:100%;
+
+  ul {
+    list-style: none;
+    float: right;
+
+    li {
+      float: left;
+      padding:  0.4em 1em;
+      color: $menu-text-colour;
+    }
+    li:hover {
+      background-color: $main-background-color;
+    }
+
+  }
+
+}
+
+.container {
+  position: fixed;
+  top: $nav-height;
+  // bottom: $nav-height;
+  background-color: red;
+
+  ul {
+    list-style-type: none;
+    position: fixed;
+    width: 65%;
+    left: 17.5%;
+    height: 92%;
+    border-left: 0.2em solid rgba(100,100,100,0.2);
+    border-right: 0.2em solid rgba(100,100,100,0.2);
+    overflow: scroll;
+
+    li {
+      padding: 0.5em;
+
+    }
+
+    li:nth-child(odd) {
+      background: $main-background-color;
+      color: $menu-text-colour;
+    }
+  }
+
+}
+
+#msgForm {
+  background: $menu-background-color;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  left: 17.5%;
+  height: $nav-height;
+  width: 65%;
+
+
+    input {
+      outline: none;
+      font: 12px $main-font;
+      border: 0;
+      // padding: 10px;
+      width: 90%;
+      height: 100%;
+      // margin-right: .5%;
+    }
+
+    button {
+      font: 12px $main-font;
+      outline: none;
+      width: 10%;
+      height: 100%;
+      border: none;
+      border-left: 1px solid gray;
+      background-color: $menu-text-colour;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+
+}
