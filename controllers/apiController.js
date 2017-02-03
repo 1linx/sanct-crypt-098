@@ -22,7 +22,7 @@ module.exports = function(app) {
     // res.sendFile(__dirname + '/views/index.html');
     // });
 
-    app.get('/chat', function(req, res) {
+    app.get('/', function(req, res) {
             res.render('chat');
 
         // pool.getConnection(function(err, connection) {
