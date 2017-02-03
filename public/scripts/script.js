@@ -129,22 +129,22 @@ function upperCaseF(a){
     }, 1);
 }
 
-$('#diceBtns').submit(function(e){
-    e.preventDefault();
+// $('#diceBtns').submit(function(e){
+//     e.preventDefault();
 
-    var rollResult = "Rolled: " + diceRoll(1,1,6);
+//     var rollResult = "Rolled: " + diceRoll(1,1,6);
 
-    $.ajax({
-        url:'/post/',
-        type:'post',
-        data:"msg=" + rollResult,
-        success:function(){
-            //whatever you wanna do after the form is successfully submitted
-            socket.emit('chat message', rollResult);
-            return false;
-        }
-    });
-});
+//     $.ajax({
+//         url:'/post/',
+//         type:'post',
+//         data:"msg=" + rollResult,
+//         success:function(){
+//             //whatever you wanna do after the form is successfully submitted
+//             socket.emit('chat message', rollResult);
+//             return false;
+//         }
+//     });
+// });
 
 
 
@@ -156,17 +156,18 @@ var socket = io();
 
 $('#msgForm').submit(function(e){
     e.preventDefault();
-    $.ajax({
-        url:'/post/',
-        type:'post',
-        data:$('#msgForm').serialize(),
-        success:function(){
-            //whatever you wanna do after the form is successfully submitted
-            socket.emit('chat message', $('#msg').val());
-            $('#msg').val('');
-            return false;
-        }
-    });
+    socket.emit('chat message', $('#msg').val());
+    // $.ajax({
+    //     url:'/post/',
+    //     type:'post',
+    //     data:$('#msgForm').serialize(),
+    //     success:function(){
+    //         //whatever you wanna do after the form is successfully submitted
+    //         socket.emit('chat message', $('#msg').val());
+    //         $('#msg').val('');
+    //         return false;
+    //     }
+    // });
 });
 
 

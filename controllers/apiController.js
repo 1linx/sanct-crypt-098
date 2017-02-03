@@ -18,9 +18,9 @@ module.exports = function(app) {
     // database : 'chatdb'
     // });
 
-    app.get('/', function(req, res){
-    res.sendFile(__dirname + '/views/index.html');
-    });
+    // app.get('/', function(req, res){
+    // res.sendFile(__dirname + '/views/index.html');
+    // });
 
     app.get('/chat', function(req, res) {
             res.render('chat');
@@ -40,45 +40,45 @@ module.exports = function(app) {
         // });
     });
 
-    app.post('/post', urlencodedParser, function(req, res) {
+    // app.post('/post', urlencodedParser, function(req, res) {
 
-    if (!req.body) return res.sendStatus(400);
+    //     if (!req.body) return res.sendStatus(400);
 
-    console.log('Data: ' + JSON.stringify(req.body));
+    //     console.log('Data: ' + JSON.stringify(req.body));
 
-    var msg = req.body.msg;
-    var date = new Date().toISOString().slice(0, 23).replace('T', ' ');
-    console.log(date);
-    console.log("content of msg: " + msg + " " + typeof msg);
+    //     var msg = req.body.msg;
+    //     var date = new Date().toISOString().slice(0, 23).replace('T', ' ');
+    //     console.log(date);
+    //     console.log("content of msg: " + msg + " " + typeof msg);
 
-    pool.getConnection(function(err, connection) {
+    //     pool.getConnection(function(err, connection) {
 
-        connection.query('INSERT INTO chat_messages SET ?', {msg: msg, created: date}, function(err, result) {
-        if (err) throw err;
+    //         connection.query('INSERT INTO chat_messages SET ?', {msg: msg, created: date}, function(err, result) {
+    //         if (err) throw err;
 
-        connection.release();
+    //         connection.release();
 
-        });
+    //         });
 
-    res.send('Data received: ' + req.body.msg);
+    //     res.send('Data received: ' + req.body.msg);
 
-    });
+    //     });
 
-    });
+    // });
 
 
     // Old. To be removed
-    app.get('/stored', function(req, res){
-    res.json(results);
-    });
+    // app.get('/stored', function(req, res){
+    // res.json(results);
+    // });
 
 
-    app.get('/data', function(req, res) {
-    res.render('data', {
-        results: results
-    });
+    // app.get('/data', function(req, res) {
+    // res.render('data', {
+    //     results: results
+    // });
 
-    });
+    // });
 
 
     //static route - style, js, images, etc
