@@ -2,7 +2,7 @@
 var noiseTextColor = "orangered";
 var messageTextColor = "white";
 var charLimit = 1000;
-var loadTime = 0;
+var loadTime = 2000;
 
 var selectChar = "";
 var item = [];
