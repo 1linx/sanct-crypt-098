@@ -8,36 +8,36 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 module.exports = function(app) {
 
-    var mysql = require('mysql');
+    // var mysql = require('mysql');
 
-    var pool = mysql.createPool({
-    connectionLimit : 10,
-    host     : 'localhost',
-    user     : 'root',
-    password : 'hamandpickle',
-    database : 'chatdb'
-    });
+    // var pool = mysql.createPool({
+    // connectionLimit : 10,
+    // host     : 'localhost',
+    // user     : 'root',
+    // password : 'theusual',
+    // database : 'chatdb'
+    // });
 
     app.get('/', function(req, res){
     res.sendFile(__dirname + '/views/index.html');
     });
 
     app.get('/chat', function(req, res) {
+            res.render('chat');
 
-    pool.getConnection(function(err, connection) {
+        // pool.getConnection(function(err, connection) {
 
-        connection.query('SELECT * FROM (SELECT * FROM chat_messages ORDER BY created DESC LIMIT 100) AS `table` ORDER by id ASC', function(err, results, fields) {
-        if (err) throw err;
+            // connection.query('SELECT * FROM (SELECT * FROM chat_messages ORDER BY created DESC LIMIT 100) AS `table` ORDER by id ASC', function(err, results, fields) {
+            // if (err) throw err;
 
-        res.render('chat', {
-            results: results
-        });
+            // res.render('chat', {
+            //     results: results
+            // });
 
-        connection.release();
-
-        });
-
-    });
+            // });
+            // connection.release();
+            
+        // });
     });
 
     app.post('/post', urlencodedParser, function(req, res) {

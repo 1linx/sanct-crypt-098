@@ -5,33 +5,41 @@
 
 	<!-- static link to custome site css -->
 	<link rel="stylesheet" href="static/styles/style.css"></style>
-
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
-    </nav>
-
-    <div class="container">
-      <ul id="messages">
-          <% results.forEach(function(result) { %>
-              <li><%= result.msg %></li>
-          <% }); %>
-      </ul>
-      <form id="diceBtns" name="diceBtns" action="">
-        <button id="roll1D6" name="roll1D6">Roll 1d6</button>
-      </form>
-
-      <form id="msgForm" name ="msgForm" action="">
-        <input id="msg" name="msg" autocomplete="off" /><button>Send</button>
-      </form>
+    <!-- Loader content -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+    
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    
     </div>
 
+    <div id="content">
+      <div>
+        <h2 id="sanct-heading">#sanctOS...connection scrambling enabled...</h1>
+        
+      </div>
+
+      <div id="textscrawl">
+        <div id="text-scramble"><!-- span>Example</span--></div>
+          <div>
+
+            
+
+           </div>
+        </div>
+
+        <div id="formSection">
+              <form id="msgForm" name ="msgForm" action="">
+                <input id="msg" name="msg" autocomplete="off" onkeydown="upperCaseF(this)" autofocus/>
+                <br />
+                <button>Send</button>
+              </form>
+        </div>
+    </div>
   </body>
 
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
