@@ -1,8 +1,8 @@
 // default values
 var noiseTextColor = "orangered";
 var messageTextColor = "white";
-var charLimit = 1000;
-var loadTime = 2000;
+var charLimit = 2000;
+var loadTime = 3000;
 
 var selectChar = "";
 var item = [];
@@ -10,7 +10,7 @@ var item = [];
 
 $(document).ready(function() {
     // Add random characters
-    seedDefaultText(500);
+    seedDefaultText(charLimit);
     
     var codeBox = document.getElementById("text-scramble");
 
@@ -50,7 +50,7 @@ timeout();
                 codeBox.insertBefore(whiteTextElem, codeBox.firstElementChild);
             }
             timeout();
-        }, 50);
+        }, 150);
     }
 
  
