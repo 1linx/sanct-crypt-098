@@ -1,5 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
+var port = process.env.PORT || 3000;
 
 var apiController = require('./controllers/apiController');
 
@@ -29,6 +30,6 @@ io.on('connection', function(socket){
 });
 
 // run server, set port
-http.listen(3000, function(){
+http.listen(port, function(){
   console.log('listening on port:3000');
 });
