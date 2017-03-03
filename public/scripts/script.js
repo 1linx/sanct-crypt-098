@@ -55,100 +55,102 @@ $(document).ready(function() {
     }
 
     // This controls all the decorative, unused lines of scrawling code.
-    decorativeCodeTimeoutLoop1();
-    function decorativeCodeTimeoutLoop1() {
-        setTimeout(function () {
+    decorativeCodeTimeoutLoop();
+    function decorativeCodeTimeoutLoop() {
+        decorativeCodeTimeoutLoop1();
+        function decorativeCodeTimeoutLoop1() {
+            setTimeout(function () {
+                
+                var codeBox1 = document.getElementById("text-scramble1");
+
+                codeBox1.removeChild(codeBox1.childNodes[codeBox1.childElementCount]);
+
+                
+                var whiteTextElem1 = document.createElement("span");
+
+                whiteTextElem1.style.color = noiseTextColor;
+
+                var messageTextNode1 = document.createTextNode(randomChar(1));
+                
+                whiteTextElem1.appendChild(messageTextNode1);
+
+                codeBox1.insertBefore(whiteTextElem1, codeBox1.firstElementChild);
             
-            var codeBox1 = document.getElementById("text-scramble1");
+                decorativeCodeTimeoutLoop1();
+            }, diceRoll(1,200,400));
+        }
 
-            codeBox1.removeChild(codeBox1.childNodes[codeBox1.childElementCount]);
 
+        decorativeCodeTimeoutLoop2();
+        function decorativeCodeTimeoutLoop2() {
+            setTimeout(function () {
+                
+                var codeBox2 = document.getElementById("text-scramble2");
+
+                codeBox2.removeChild(codeBox2.childNodes[codeBox2.childElementCount]);
+
+                
+                var whiteTextElem2 = document.createElement("span");
+
+                whiteTextElem2.style.color = noiseTextColor;
+
+                var messageTextNode2 = document.createTextNode(randomChar(1));
+                
+                whiteTextElem2.appendChild(messageTextNode2);
+
+                codeBox2.insertBefore(whiteTextElem2, codeBox2.firstElementChild);
             
-            var whiteTextElem1 = document.createElement("span");
+                decorativeCodeTimeoutLoop2();
+            }, diceRoll(1,150,250));
+        }
 
-            whiteTextElem1.style.color = noiseTextColor;
+        
+        decorativeCodeTimeoutLoop4();
+        function decorativeCodeTimeoutLoop4() {
+            setTimeout(function () {
+                
+                var codeBox4 = document.getElementById("text-scramble4");
 
-            var messageTextNode1 = document.createTextNode(randomChar(1));
+                codeBox4.removeChild(codeBox4.childNodes[codeBox4.childElementCount]);
+
+                
+                var whiteTextElem4 = document.createElement("span");
+
+                whiteTextElem4.style.color = noiseTextColor;
+
+                var messageTextNode4 = document.createTextNode(randomChar(1));
+                
+                whiteTextElem4.appendChild(messageTextNode4);
+
+                codeBox4.insertBefore(whiteTextElem4, codeBox4.firstElementChild);
             
-            whiteTextElem1.appendChild(messageTextNode1);
+                decorativeCodeTimeoutLoop4();
+            }, diceRoll(1,150,250));
+        }
 
-            codeBox1.insertBefore(whiteTextElem1, codeBox1.firstElementChild);
-           
-            decorativeCodeTimeoutLoop1();
-        }, diceRoll(1,200,400));
+        decorativeCodeTimeoutLoop5();
+        function decorativeCodeTimeoutLoop5() {
+            setTimeout(function () {
+                
+                var codeBox5 = document.getElementById("text-scramble5");
+
+                codeBox5.removeChild(codeBox5.childNodes[codeBox5.childElementCount]);
+
+                
+                var whiteTextElem5 = document.createElement("span");
+
+                whiteTextElem5.style.color = noiseTextColor;
+
+                var messageTextNode5 = document.createTextNode(randomChar(1));
+                
+                whiteTextElem5.appendChild(messageTextNode5);
+
+                codeBox5.insertBefore(whiteTextElem5, codeBox5.firstElementChild);
+            
+                decorativeCodeTimeoutLoop5();
+            }, diceRoll(1,200,400));
+        }
     }
-
-
-    decorativeCodeTimeoutLoop2();
-    function decorativeCodeTimeoutLoop2() {
-        setTimeout(function () {
-            
-            var codeBox2 = document.getElementById("text-scramble2");
-
-            codeBox2.removeChild(codeBox2.childNodes[codeBox2.childElementCount]);
-
-            
-            var whiteTextElem2 = document.createElement("span");
-
-            whiteTextElem2.style.color = noiseTextColor;
-
-            var messageTextNode2 = document.createTextNode(randomChar(1));
-            
-            whiteTextElem2.appendChild(messageTextNode2);
-
-            codeBox2.insertBefore(whiteTextElem2, codeBox2.firstElementChild);
-           
-            decorativeCodeTimeoutLoop2();
-        }, diceRoll(1,150,250));
-    }
-
-    
-    decorativeCodeTimeoutLoop4();
-    function decorativeCodeTimeoutLoop4() {
-        setTimeout(function () {
-            
-            var codeBox4 = document.getElementById("text-scramble4");
-
-            codeBox4.removeChild(codeBox4.childNodes[codeBox4.childElementCount]);
-
-            
-            var whiteTextElem4 = document.createElement("span");
-
-            whiteTextElem4.style.color = noiseTextColor;
-
-            var messageTextNode4 = document.createTextNode(randomChar(1));
-            
-            whiteTextElem4.appendChild(messageTextNode4);
-
-            codeBox4.insertBefore(whiteTextElem4, codeBox4.firstElementChild);
-           
-            decorativeCodeTimeoutLoop4();
-        }, diceRoll(1,150,250));
-    }
-
-    decorativeCodeTimeoutLoop5();
-    function decorativeCodeTimeoutLoop5() {
-        setTimeout(function () {
-            
-            var codeBox5 = document.getElementById("text-scramble5");
-
-            codeBox5.removeChild(codeBox5.childNodes[codeBox5.childElementCount]);
-
-            
-            var whiteTextElem5 = document.createElement("span");
-
-            whiteTextElem5.style.color = noiseTextColor;
-
-            var messageTextNode5 = document.createTextNode(randomChar(1));
-            
-            whiteTextElem5.appendChild(messageTextNode5);
-
-            codeBox5.insertBefore(whiteTextElem5, codeBox5.firstElementChild);
-           
-            decorativeCodeTimeoutLoop5();
-        }, diceRoll(1,200,400));
-    }
-
 
     // this brings in the page after load screen.
     setTimeout(function(){
@@ -252,6 +254,27 @@ function upperCaseF(a){
     }, 1);
 }
 
+function userConnectedMessage(int) {
+
+    document.getElementById("userCountHolder").innerHTML = int + " users connected.";
+    document.getElementById("userCountHolder").addClass = "fadeInAndOut";
+
+    //     var userCountDiv = document.getElementById("title-section");
+    //     console.log(userCountDiv);
+
+    //     var newUserCountPara = document.createElement("p");
+    //     var newUserCountTextNode = document.createTextNode("A user connected.");
+    // setTimeout(function() {
+        
+        
+    //     newUserCountPara.appendChild(newUserCountTextNode);
+    //     userCountDiv.appendChild(newUserCountPara);
+    // }, 4000);
+    // console.log(userCountDiv.childNodes[1]);
+    // userCountDiv.removeChild(userCountDiv.childNodes[1]);
+    
+}
+
 // $('#diceBtns').submit(function(e){
 //     e.preventDefault();
 
@@ -275,6 +298,8 @@ function upperCaseF(a){
 // var objDiv = document.getElementById("messages");
 // objDiv.scrollTop = objDiv.scrollHeight;
 
+
+/* Socket IO stuff, keep separate. */
 var socket = io();
 
 $('#msgForm').submit(function(e){
@@ -294,34 +319,19 @@ $('#msgForm').submit(function(e){
     // });
 });
 
-
-
-/* Socket IO stuff, keep separate. */
 socket.on('chat message', function(msg){   
     processItem(msg);
 });
 
 
-// socket.on('user connected', function(msg){   
-//     console.log("user joined");
-//     numUsers += 1;
-//     console.log('Users: ' + numUsers);
-    
-    
-//     var textScrawlDiv = document.getElementById("textscrawl");
+socket.on('user connected', function(msg){   
+    console.log("Socket users connected: " + msg);
+    // process this into something useful.
+    userConnectedMessage(msg);
+});
 
-//     var newNoiseDiv = document.createElement("div");
-
-//     var newNoiseSpan = document.createElement("span");
-
-//     newNoiseSpan.style.color = "blue";
-
-//     var newNoiseTextNodeContents = document.createTextNode(randomChar(1000));
-    
-//     newNoiseSpan.appendChild(newNoiseTextNodeContents);
-
-//     newNoiseDiv.appendChild(newNoiseSpan);
-
-//     textScrawlDiv.insertBefore(newNoiseDiv, textScrawlDiv.children[3]);
-
-// });
+socket.on('user disconnected', function(msg){   
+    console.log("Socket users connected: " + msg);
+    // process this into something useful.
+    userConnectedMessage(msg);
+});

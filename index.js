@@ -4,6 +4,8 @@ var port = process.env.PORT || 3000;
 
 var apiController = require('./controllers/apiController');
 
+var numberOfUsers = 0;
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -15,7 +17,8 @@ var io = require('socket.io')(http);
 io.on('connection', function(socket){
   // io.emit('chat message', 'A user connected');
   console.log('a user connected');
-  io.emit('user connected', true);
+  numberOfUsers++;
+  io.emit('user connected', numberOfUsers);
 
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
@@ -26,8 +29,10 @@ io.on('connection', function(socket){
   });
 
   socket.on('disconnect', function(){
-    console.log('user disconnected');
-    io.emit('user disconnected', true);
+    console.log('1 user disconnected');
+    numberOfUsers--;
+    var disconMessage = "A user disconnected"
+    io.emit('user disconnected', numberOfUsers);
   });
 });
 

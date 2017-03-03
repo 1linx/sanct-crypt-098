@@ -18,6 +18,16 @@ body {
     text-align: center;
 }
 
+#userCountHolder {
+    margin-top:0.5em;
+    text-align: center;
+}
+
+.fadeInAndOut {
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
+}
+
 #textscrawl {  
   width: 90%;
   height: 13.5ex;
@@ -165,6 +175,17 @@ body {
 //       cursor: pointer;
 //     }    
 // }
+
+//Text fade in/out
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
 
 
 // Loader styles
