@@ -4,7 +4,7 @@ var port = process.env.PORT || 3000;
 
 var apiController = require('./controllers/apiController');
 
-var numberOfUsers = 0;
+var numberOfUsers = -1;
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
