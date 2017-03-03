@@ -12,9 +12,6 @@ var numUsers = 0;
 $(document).ready(function() {
     // Add random characters
     seedDefaultText(charLimit);
-    
-    // var codeBox = document.getElementById("text-scramble3");
-
 
     messageCodeTimeoutLoop();
     function messageCodeTimeoutLoop() {
@@ -256,48 +253,11 @@ function upperCaseF(a){
 
 function userConnectedMessage(int) {
 
-    document.getElementById("userCountHolder").innerHTML = int + " users connected.";
-    document.getElementById("userCountHolder").addClass = "fadeInAndOut";
+    document.getElementById("userCountHolder").innerHTML = "Connected: " + int;
+    // document.getElementById("userCountHolder").style.color = messageTextColor;
+    // document.getElementById("userCountHolder").addClass("fadeInAndOut");
 
-    //     var userCountDiv = document.getElementById("title-section");
-    //     console.log(userCountDiv);
-
-    //     var newUserCountPara = document.createElement("p");
-    //     var newUserCountTextNode = document.createTextNode("A user connected.");
-    // setTimeout(function() {
-        
-        
-    //     newUserCountPara.appendChild(newUserCountTextNode);
-    //     userCountDiv.appendChild(newUserCountPara);
-    // }, 4000);
-    // console.log(userCountDiv.childNodes[1]);
-    // userCountDiv.removeChild(userCountDiv.childNodes[1]);
-    
 }
-
-// $('#diceBtns').submit(function(e){
-//     e.preventDefault();
-
-//     var rollResult = "Rolled: " + diceRoll(1,1,6);
-
-//     $.ajax({
-//         url:'/post/',
-//         type:'post',
-//         data:"msg=" + rollResult,
-//         success:function(){
-//             //whatever you wanna do after the form is successfully submitted
-//             socket.emit('chat message', rollResult);
-//             return false;
-//         }
-//     });
-// });
-
-
-
-//scroll fixes, to be completed.
-// var objDiv = document.getElementById("messages");
-// objDiv.scrollTop = objDiv.scrollHeight;
-
 
 /* Socket IO stuff, keep separate. */
 var socket = io();
@@ -306,6 +266,8 @@ $('#msgForm').submit(function(e){
     e.preventDefault();
     socket.emit('chat message', $('#msg').val());
     $('#msg').val('');
+
+    /* Legacy from when messages could be stored. */
     // $.ajax({
     //     url:'/post/',
     //     type:'post',
@@ -326,12 +288,10 @@ socket.on('chat message', function(msg){
 
 socket.on('user connected', function(msg){   
     console.log("Socket users connected: " + msg);
-    // process this into something useful.
     userConnectedMessage(msg);
 });
 
 socket.on('user disconnected', function(msg){   
     console.log("Socket users connected: " + msg);
-    // process this into something useful.
     userConnectedMessage(msg);
 });
